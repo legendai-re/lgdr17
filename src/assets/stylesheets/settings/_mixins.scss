@@ -1,0 +1,114 @@
+@mixin vendor-property($property, $value) {
+    @each $vendor in ('-moz-', '-webkit-', '-o-', '-ms-', '') {
+        #{$vendor}#{$property}: #{$value};
+    }
+}
+
+@mixin vendor-value($property, $value) {
+    @each $vendor in ('-moz-', '-webkit-', '-o-', '-ms-', '') {
+        #{$property}: #{$vendor}#{$value};
+    }
+}
+
+@mixin vendor($property, $value) {
+    @each $vendor in ('-moz-', '-webkit-', '-o-', '-ms-', '') {
+        #{$vendor}#{$property}: #{$vendor}#{$value};
+    }
+}
+
+@mixin color-placeholder ( $c ) {
+    &::-webkit-input-placeholder { color: $c; }
+    &::-moz-placeholder { color: $c; }
+    &:-ms-input-placeholder { color: $c; }
+    &:-moz-placeholder { color: $c; }
+}
+
+@mixin hide-text {
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
+@mixin font-smoothing {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin linearGradient($c1, $c2){
+    background: $c1; /* Old browsers */
+    background: -moz-linear-gradient(top,  $c1 0%, $c2 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$c1), color-stop(100%,$c2)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $c1 0%,$c2 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $c1 0%,$c2 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $c1 0%,$c2 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $c1 0%,$c2 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+// RWD : Responsive Web Design
+
+@mixin respond-to($m, $px:0) {
+    @if $m == xs {
+        @media (min-width: $screen-xs) {
+            @content;
+        }
+    }
+    @else if $m == sm {
+        @media (min-width: $screen-sm) {
+            @content;
+        }
+    }
+    @else if $m == md {
+        @media (min-width: $screen-md) {
+            @content;
+        }
+    }
+    @else if $m == lg {
+        @media (min-width: $screen-lg) {
+            @content;
+        }
+    }
+    @else if $m == no-retina {
+        @media screen and (-webkit-max-device-pixel-ratio: 1) {
+            @content;
+        }
+    }
+    @else if $m == retina {
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+            @content;
+        }
+    }
+    @else {
+        @media only screen and (max-width: $px) {
+            @content;
+        }
+    }
+}
+
+@mixin rwd-xs () {
+    @include respond-to (xs) { @content };
+}
+
+@mixin rwd-sm () {
+    @include respond-to (sm) { @content };
+}
+
+@mixin rwd-md () {
+    @include respond-to (md) { @content };
+}
+
+@mixin rwd-lg () {
+    @include respond-to (lg) { @content };
+}
+
+@mixin rwd-no-retina () {
+    @include respond-to (no-retina) { @content };
+}
+
+@mixin rwd-retina () {
+    @include respond-to (retina) { @content };
+}
+
+@mixin rwd-max-width ( $px ) {
+    @include respond-to ( "", $px ) { @content };
+}

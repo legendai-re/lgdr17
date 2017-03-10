@@ -1,0 +1,36 @@
+// -------------------------------------
+// Basic colors
+// -------------------------------------
+
+$white:                     #FFFFFF;
+$black:                     #000000;
+
+
+// -------------------------------------
+// Brand colors
+// -------------------------------------
+
+$brand-primary:             #202545;
+$brand-secondary:           #377AF4;
+
+$background-color:          $white;
+$link-color:                $brand-secondary;
+$link-hover-color:          $brand-secondary;
+
+
+// -------------------------------------
+// Fonts
+// -------------------------------------
+
+$brand-font:                Roboto, sans-serif;
+$headings-font:             $brand-font;
+$font-family-base:          Source Sans Pro, sans-serif;
+$icons-font:                Material Icons;
+
+
+// -------------------------------------
+// Other
+// -------------------------------------
+
+$border-color:              rgba($black, .1);
+$box-shadow-color:          rgba($black, .04);

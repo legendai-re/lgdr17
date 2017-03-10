@@ -1,0 +1,68 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: $background-color;
+    font-family: $font-family-base;
+    font-size: 1rem;
+    @include font-smoothing();
+}
+
+a {
+    color: $link-color;
+
+    &:hover, &.active {
+        color: $brand-primary;
+    }
+}
+
+a:focus {
+  outline: 0;
+  border-color: $link-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $headings-font;
+    color: $brand-primary;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 2rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+    line-height: 2rem;
+}
+
+h5 {
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+h6 {
+    font-size: .875rem;
+    line-height: 1rem;
+}
+
+p {
+  line-height: 1.25rem;
+  margin: 0 0 .75rem;
+}
+
+p + img {
+  margin-top: 1.5rem;
+}
