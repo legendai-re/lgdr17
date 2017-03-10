@@ -10,7 +10,7 @@ A basic structure for websites and projects. Uses Sass and Pug (previously Jade)
 ## Bootstrap the project
 * Download the code and unzip it or clone it
 * Open a cmd prompt at the root
-* Run `npm install`
+* Run `npm install` and `npm install gulp -g` to install gulp globally
 * Your app must be all set
 
 You can launch a builtin server by launching `gulp`
