@@ -29,8 +29,8 @@ gulp.task('sass', function() {
 });
 
 // Concatenate & Minify JS
-gulp.task('scripts', function() {
-  return gulp.src(src + 'assets/javascripts/*.js')
+gulp.task('scripts', ['copy:vendors'], function() {
+  return gulp.src([src + 'assets/javascripts/**/*.js', src + 'assets/javascripts/vendors/*.js'])
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dist))
     .pipe(rename('main.min.js'))
@@ -46,10 +46,38 @@ gulp.task('pug', function() {
     .pipe(browserSync.stream())
 });
 
+// Copy vendors/libs
+gulp.task('copy:vendors', function() {
+  return gulp.src(src + 'assets/javascripts/vendors/**/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest(dist + 'js/vendors'))
+    .pipe(browserSync.stream())
+});
+
+// Copy images
+gulp.task('copy:images', function() {
+   gulp.src(src + 'assets/images/**/*.{png,jpg,jpeg,svg}')
+   .pipe(gulp.dest(dist + 'img'));
+});
+
+// Copy videos
+gulp.task('copy:videos', function() {
+   gulp.src(src + 'assets/videos/**/*.{mp4}')
+   .pipe(gulp.dest(dist + 'videos'));
+});
+
+// Copy fonts
+gulp.task('copy:fonts', function() {
+   gulp.src(src + 'assets/fonts/**/*.{ttf,woff,eof,svg,otf}')
+   .pipe(gulp.dest(dist + 'fonts'));
+});
+
 // Watch Files For Changes
 gulp.task('watch', ['browserSync', 'compile'], function() {
   gulp.watch(src + 'assets/javascripts/**/*.js', ['lint', 'scripts']);
   gulp.watch(src + 'assets/stylesheets/**/*.scss', ['sass']);
+  gulp.watch(src + 'assets/images/**/*.{png,jpg,jpeg,svg}', ['copy:images']);
+  gulp.watch(src + 'assets/fonts/**/*.{ttf,woff,eof,svg}', ['copy:fonts']);
   gulp.watch(src + 'views/**/*.pug', ['pug']);
 });
 
@@ -70,4 +98,5 @@ gulp.task('browserSync', function() {
 
 // Default Task
 gulp.task('compile', ['pug', 'lint', 'sass', 'scripts']);
-gulp.task('default', ['pug', 'lint', 'sass', 'scripts', 'watch']);
+gulp.task('copy', ['copy:images', 'copy:videos', 'copy:fonts']);
+gulp.task('default', ['pug', 'lint', 'sass', 'scripts', 'copy', 'watch']);

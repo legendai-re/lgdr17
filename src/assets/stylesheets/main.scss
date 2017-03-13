@@ -2,22 +2,28 @@
 /**
 * Description: This file import all the CSS files that needed in all pages of the app.
 * Version: 1.1.0
-* Last update: 2017/03/10
-* Author: Alex Jolly <hello@alexandrejolly.com>
+* Last update: 2017/03/13
+* Author: Alex Jolly <alex@theschoolab.com>
 *
 * Summary:
 *
-*    1. ASSETS
-*    2. BASE
-*    3. MODULES
-*    4. LAYOUTS
-*    5. HELPERS
-*    6. THEMES
+*    1. BOOTSTRAP
+*    2. ASSETS
+*    3. BASE
+*    4. MODULES
+*    5. LAYOUTS
+*    6. HELPERS
+*    7. THEMES
 *
 */
 
 @import "settings/variables";
 @import "settings/mixins";
+
+/* ==========================================================================
+1. BOOTSTRAP
+========================================================================== */
+@import "settings/bootstrap";
 
 /* ==========================================================================
 2. ASSETS
