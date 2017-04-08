@@ -48,7 +48,7 @@ gulp.task('scripts', ['lint', 'copy:vendors'], function() {
 });
 
 gulp.task('pug', function() {
-  return gulp.src(src + 'views/**/*.pug')
+  return gulp.src(src + 'views/*.pug')
     .pipe(plumber())
     .pipe(pug())
     .pipe(gulp.dest(dist))
